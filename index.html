@@ -1,23 +1,643 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>buage.cn</title>
-    <style>
-        body { font-family: -apple-system, "Segoe UI", sans-serif; display: flex;
-               min-height: 100vh; align-items: center; justify-content: center;
-               margin: 0; background: #f5f5f5; color: #333; }
-        .card { background: #fff; padding: 3rem 4rem; border-radius: 12px;
-                box-shadow: 0 4px 16px rgba(0,0,0,.08); text-align: center; }
-        h1 { margin: 0 0 .5rem; font-size: 1.6rem; }
-        p { margin: 0; color: #888; }
-    </style>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>布拉格公会 · PRAGUE GUILD</title>
+<meta name="keywords" content="布拉格公会,Prague Guild,公会官网,布拉格">
+<meta name="description" content="布拉格公会 —— 因热爱而相聚，因并肩而闪耀。">
+<link href="https://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+  html, body {
+    height: 100%;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #23262b;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover, a:focus { color: #8b1e1e; text-decoration: none; }
+  ::selection { background: #8b1e1e; color: #fff; }
+
+  /* ============ 导航 ============ */
+  .navbar-prague {
+    background: rgba(255,255,255,.92);
+    border: 0;
+    border-bottom: 1px solid #ebecee;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 10px 0;
+    transition: all .3s ease;
+  }
+  .navbar-prague .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 18px;
+    color: #23262b;
+  }
+  .navbar-prague .navbar-brand span {
+    color: #8b1e1e;
+  }
+  .navbar-prague .nav > li > a {
+    color: #6a6f76;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 15px 16px;
+    transition: color .2s ease;
+  }
+  .navbar-prague .nav > li > a:hover,
+  .navbar-prague .nav > li.active > a {
+    color: #23262b;
+    background: transparent;
+  }
+  .navbar-prague .nav > li.active > a:after {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: #8b1e1e;
+    margin: 4px auto 0;
+  }
+  .navbar-prague .navbar-toggle {
+    border-color: #ddd;
+  }
+  .navbar-prague .navbar-toggle .icon-bar {
+    background: #23262b;
+  }
+
+  /* ============ 首屏 ============ */
+  .hero {
+    position: relative;
+    padding: 150px 0 110px;
+    background: #fafafa;
+    border-bottom: 1px solid #ececec;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -220px;
+    width: 620px;
+    height: 620px;
+    margin-left: -310px;
+    background: radial-gradient(circle, rgba(139,30,30,.06) 0%, rgba(139,30,30,0) 70%);
+    pointer-events: none;
+  }
+  .hero .eyebrow {
+    font-size: 12px;
+    letter-spacing: 6px;
+    color: #9a9ea5;
+    text-transform: uppercase;
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-size: 54px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin: 0 0 22px;
+    line-height: 1.25;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: #8b1e1e;
+  }
+  .hero .lead {
+    font-size: 16px;
+    line-height: 2;
+    color: #6a6f76;
+    letter-spacing: 1px;
+    max-width: 620px;
+    margin: 0 auto 38px;
+  }
+  .hero-divider {
+    width: 40px;
+    height: 1px;
+    background: #d5d7da;
+    margin: 0 auto 38px;
+  }
+  .btn-min {
+    display: inline-block;
+    padding: 11px 30px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    border: 1px solid #23262b;
+    color: #23262b;
+    background: transparent;
+    border-radius: 2px;
+    transition: all .25s ease;
+  }
+  .btn-min:hover {
+    background: #8b1e1e;
+    border-color: #8b1e1e;
+    color: #fff;
+  }
+  .btn-min.ghost {
+    border-color: #d9dbde;
+    color: #6a6f76;
+    margin-left: 12px;
+  }
+  .btn-min.ghost:hover {
+    background: transparent;
+    border-color: #23262b;
+    color: #23262b;
+  }
+
+  /* ============ 通用区块 ============ */
+  .section {
+    padding: 90px 0;
+  }
+  .section.alt {
+    background: #fafafa;
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+  }
+  .sec-head {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .sec-head h2 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin: 0 0 14px;
+  }
+  .sec-head p {
+    font-size: 13px;
+    color: #9a9ea5;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+  .sec-head .line {
+    width: 30px;
+    height: 2px;
+    background: #8b1e1e;
+    margin: 18px auto 0;
+  }
+
+  /* 特色 */
+  .feature {
+    text-align: center;
+    padding: 0 20px;
+  }
+  .feature .icon {
+    width: 54px;
+    height: 54px;
+    line-height: 52px;
+    border: 1px solid #e3e4e6;
+    border-radius: 50%;
+    font-size: 18px;
+    color: #8b1e1e;
+    margin: 0 auto 22px;
+    transition: all .3s ease;
+  }
+  .feature:hover .icon {
+    background: #8b1e1e;
+    border-color: #8b1e1e;
+    color: #fff;
+  }
+  .feature h3 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 0 0 12px;
+  }
+  .feature p {
+    font-size: 13px;
+    line-height: 2;
+    color: #858a91;
+    margin: 0;
+  }
+
+  /* 数据 */
+  .stat {
+    text-align: center;
+    padding: 10px 0;
+  }
+  .stat .num {
+    font-size: 34px;
+    font-weight: 700;
+    color: #23262b;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  .stat .num i {
+    font-style: normal;
+    font-size: 16px;
+    color: #8b1e1e;
+    margin-left: 2px;
+  }
+  .stat .txt {
+    font-size: 12px;
+    color: #9a9ea5;
+    letter-spacing: 2px;
+    margin-top: 8px;
+  }
+
+  /* 历程 */
+  .timeline-min {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .timeline-min li {
+    position: relative;
+    padding: 0 0 34px 32px;
+    border-left: 1px solid #e6e7e9;
+  }
+  .timeline-min li:last-child {
+    border-left-color: transparent;
+    padding-bottom: 0;
+  }
+  .timeline-min li:before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #8b1e1e;
+  }
+  .timeline-min .year {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #8b1e1e;
+    font-weight: 600;
+  }
+  .timeline-min .desc {
+    font-size: 14px;
+    color: #6a6f76;
+    line-height: 1.9;
+    margin-top: 6px;
+  }
+
+  /* 联系/加入 */
+  .join {
+    text-align: center;
+    padding: 90px 0;
+    background: #23262b;
+    color: #fff;
+  }
+  .join h2 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin: 0 0 16px;
+  }
+  .join p {
+    font-size: 14px;
+    color: #a9aeb5;
+    letter-spacing: 1px;
+    margin-bottom: 34px;
+  }
+  .join .btn-min {
+    border-color: #fff;
+    color: #fff;
+  }
+  .join .btn-min:hover {
+    background: #fff;
+    border-color: #fff;
+    color: #23262b;
+  }
+  .join .btn-min.ghost {
+    border-color: #4a4e55;
+    color: #a9aeb5;
+  }
+  .join .btn-min.ghost:hover {
+    border-color: #fff;
+    color: #fff;
+    background: transparent;
+  }
+
+  /* ============ 页脚 ============ */
+  .footer {
+    padding: 40px 0 34px;
+    border-top: 1px solid #ececec;
+    font-size: 12px;
+    color: #9a9ea5;
+    text-align: center;
+  }
+  .footer .links {
+    margin-bottom: 16px;
+  }
+  .footer .links a {
+    margin: 0 12px;
+    color: #858a91;
+    letter-spacing: 1px;
+  }
+  .footer .links a:hover {
+    color: #8b1e1e;
+  }
+  .footer .beian {
+    line-height: 2.2;
+  }
+  .footer .beian span {
+    display: inline-block;
+    margin: 0 8px;
+  }
+  .footer .beian img,
+  .footer .beian .fa {
+    vertical-align: -2px;
+    margin-right: 4px;
+    color: #b3b7bd;
+  }
+  .footer .copyright {
+    margin-top: 10px;
+    color: #b3b7bd;
+  }
+
+  /* 返回顶部 */
+  #backTop {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    border: 1px solid #e3e4e6;
+    background: #fff;
+    color: #6a6f76;
+    border-radius: 2px;
+    cursor: pointer;
+    display: none;
+    z-index: 99;
+    transition: all .25s ease;
+  }
+  #backTop:hover {
+    background: #8b1e1e;
+    border-color: #8b1e1e;
+    color: #fff;
+  }
+
+  @media (max-width: 767px) {
+    .hero { padding: 100px 0 70px; }
+    .hero h1 { font-size: 32px; letter-spacing: 3px; }
+    .hero .lead { font-size: 14px; padding: 0 10px; }
+    .section { padding: 60px 0; }
+    .join { padding: 60px 0; }
+    .feature { margin-bottom: 36px; }
+    .btn-min, .btn-min.ghost { margin: 0 6px 10px; }
+    .footer .beian span { display: block; margin: 2px 0; }
+  }
+</style>
 </head>
 <body>
-    <div class="card">
-        <h1>buage.cn</h1>
-        <p>Site initialized by oject.php</p>
+
+<!-- 导航 -->
+<nav class="navbar navbar-prague navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-main">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">布拉格<span>·</span>PRAGUE</a>
     </div>
+    <div class="collapse navbar-collapse" id="nav-main">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#home">首页</a></li>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#feature">理念</a></li>
+        <li><a href="#history">历程</a></li>
+        <li><a href="#join">加入</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- 首屏 -->
+<header class="hero" id="home">
+  <div class="container">
+    <p class="eyebrow">Since 2006 · Prague Guild</p>
+    <h1>布拉格<em>公会</em></h1>
+    <div class="hero-divider"></div>
+    <p class="lead">
+      源于热爱，聚于布拉格。<br>
+      我们不做庞大的数字，只做彼此信赖的战友。
+    </p>
+    <a href="#join" class="btn-min">申请加入</a>
+    <a href="#about" class="btn-min ghost">了解更多</a>
+  </div>
+</header>
+
+<!-- 关于 -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="sec-head">
+      <h2>关于我们</h2>
+      <p>ABOUT THE GUILD</p>
+      <div class="line"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <p style="font-size:15px;line-height:2.2;color:#6a6f76;text-align:center;letter-spacing:1px;">
+          布拉格公会成立于网络游戏兴起的年代，从最初的几个人、一台语音，
+          走到今天跨游戏、跨区的成熟社群。我们相信公会的意义不在于人数与排名，
+          而在于每一次团战时的默契、每一次低谷时的陪伴。这里有严格的队内纪律，
+          也有兄弟般的温度。
+        </p>
+      </div>
+    </div>
+    <div class="row" style="margin-top:60px;">
+      <div class="col-sm-3 col-xs-6">
+        <div class="stat"><div class="num" data-count="12">0</div><div class="txt">成立年份</div></div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="stat"><div class="num" data-count="3600">0</div><div class="txt">在册成员</div></div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="stat"><div class="num" data-count="48">0</div><div class="txt">核心战队</div></div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="stat"><div class="num" data-count="260">0</div><div class="txt">团战记录</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 理念 -->
+<section class="section alt" id="feature">
+  <div class="container">
+    <div class="sec-head">
+      <h2>我们的理念</h2>
+      <p>WHAT WE BELIEVE</p>
+      <div class="line"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <div class="feature">
+          <div class="icon"><i class="fa fa-shield"></i></div>
+          <h3>并肩作战</h3>
+          <p>统一指挥、统一行动。战场之上，没有旁观者，只有彼此的背影。</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="feature">
+          <div class="icon"><i class="fa fa-heart-o"></i></div>
+          <h3>兄弟情义</h3>
+          <p>装备可以再打，兄弟不能丢。资源共享，从不计较得失。</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="feature">
+          <div class="icon"><i class="fa fa-gavel"></i></div>
+          <h3>公正守则</h3>
+          <p>积分透明、奖罚分明。所有规则公之于众，一视同仁。</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="feature">
+          <div class="icon"><i class="fa fa-flag"></i></div>
+          <h3>荣誉至上</h3>
+          <p>每一场胜仗都写进公会史册，每一个名字都值得被记住。</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="feature">
+          <div class="icon"><i class="fa fa-comments-o"></i></div>
+          <h3>开放交流</h3>
+          <p>语音、论坛、群聊随时开放，新人也能第一时间融入。</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="feature">
+          <div class="icon"><i class="fa fa-rocket"></i></div>
+          <h3>持续成长</h3>
+          <p>从新手到核心，完善的带练与考核体系，陪伴一路进阶。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 历程 -->
+<section class="section" id="history">
+  <div class="container">
+    <div class="sec-head">
+      <h2>发展历程</h2>
+      <p>MILESTONES</p>
+      <div class="line"></div>
+    </div>
+    <ul class="timeline-min">
+      <li>
+        <div class="year">2014 · 缘起</div>
+        <div class="desc">几位志同道合的玩家在同一张地图结伴，布拉格公会的雏形由此诞生。</div>
+      </li>
+      <li>
+        <div class="year">2017 · 立旗</div>
+        <div class="desc">正式定名"布拉格"，确立"兄弟情义、荣誉至上"的会训与管理制度。</div>
+      </li>
+      <li>
+        <div class="year">2020 · 扩张</div>
+        <div class="desc">组建首支核心战队，跨区作战，连续多个赛季站稳服务器第一梯队。</div>
+      </li>
+      <li>
+        <div class="year">2023 · 转型</div>
+        <div class="desc">从单一游戏走向多端社群，建立新人带练与积分考核体系。</div>
+      </li>
+      <li>
+        <div class="year">至今 · 同行</div>
+        <div class="desc">成员遍布各地，故事仍在继续 —— 我们始终在等下一个人加入。</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 加入 -->
+<section class="join" id="join">
+  <div class="container">
+    <h2>加入布拉格</h2>
+    <p>只要你认同我们的信条，这里永远为你留一个位置。</p>
+    <a href="#" class="btn-min">提交申请</a>
+    <a href="#" class="btn-min ghost">联系管理</a>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="links">
+      <a href="#home">首页</a>
+      <a href="#about">关于公会</a>
+      <a href="#history">发展历程</a>
+      <a href="#join">加入我们</a>
+      <a href="#">意见反馈</a>
+    </div>
+    <div class="beian">
+      <span><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">鲁ICP备2024092961号-15</a></span>
+      <span>
+        <i class="fa fa-shield"></i>
+        <a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" rel="nofollow">鲁公网安备37130202373077号</a>
+      </span>
+    </div>
+    <p class="copyright">Copyright &copy; 2026 布拉格公会 &nbsp;·&nbsp; Prague Guild &nbsp;All Rights Reserved.</p>
+  </div>
+</footer>
+
+<div id="backTop" title="返回顶部"><i class="fa fa-angle-up"></i></div>
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script>
+  $(function () {
+    // 平滑滚动
+    $('a[href^="#"]').on('click', function (e) {
+      var target = $(this.getAttribute('href'));
+      if (target.length) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: target.offset().top - 60 }, 500);
+      }
+    });
+
+    // 移动端点击后收起导航
+    $('.navbar-collapse a').on('click', function () {
+      $('.navbar-collapse').collapse('hide');
+    });
+
+    // 返回顶部
+    $(window).on('scroll', function () {
+      if ($(this).scrollTop() > 300) {
+        $('#backTop').fadeIn();
+      } else {
+        $('#backTop').fadeOut();
+      }
+    });
+    $('#backTop').on('click', function () {
+      $('html, body').animate({ scrollTop: 0 }, 400);
+    });
+
+    // 数字滚动
+    function countUp($el) {
+      var end = parseInt($el.data('count'), 10);
+      var start = parseInt($el.text(), 10) || 0;
+      $({ i: start }).animate({ i: end }, {
+        duration: 1200,
+        easing: 'swing',
+        step: function () { $el.text(Math.floor(this.i)); },
+        complete: function () { $el.text(end); }
+      });
+    }
+    var played = false;
+    $(window).on('scroll', function () {
+      if (played) return;
+      if ($(window).scrollTop() + $(window).height() > $('#about').offset().top + 100) {
+        played = true;
+        $('.stat .num').each(function () { countUp($(this)); });
+      }
+    });
+  });
+</script>
 </body>
 </html>
